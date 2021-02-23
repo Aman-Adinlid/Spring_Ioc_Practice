@@ -2,26 +2,36 @@ package se.lexicon.Dao;
 
 import se.lexicon.model.Person;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class PersonDaoIml implements PersonDao {
+
+    private List<Person> personList = new ArrayList<>();
+
     @Override
     public Person save(Person person) {
+        if (person.getId() == 0) {
+            person.setId(1);
+            Person pr = findById(person.getId());
+            pr.setName(person.getName());
+            pr.setEmail(person.getEmail());
+        }
         return null;
     }
 
     @Override
     public Person findById(int id) {
-        return null;
+        return personList.stream().filter(person -> person.getId() == id).findFirst().orElse(null);
     }
 
     @Override
     public List<Person> findAll() {
-        return null;
+        return personList;
     }
 
     @Override
     public boolean delete(int id) {
-        return false;
+        return personList.removeIf(person -> person.getId() == id);
     }
 }
