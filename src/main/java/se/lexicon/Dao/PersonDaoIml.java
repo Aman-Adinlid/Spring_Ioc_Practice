@@ -1,10 +1,12 @@
 package se.lexicon.Dao;
 
+import org.springframework.stereotype.Component;
 import se.lexicon.model.Person;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Component("PersonDao")
 public class PersonDaoIml implements PersonDao {
 
     private List<Person> personList = new ArrayList<>();
