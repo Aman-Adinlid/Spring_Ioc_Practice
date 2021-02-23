@@ -19,7 +19,7 @@ public class PersonDaoIml implements PersonDao {
             pr.setName(person.getName());
             pr.setEmail(person.getEmail());
         }
-        return null;
+        return person;
     }
 
     @Override
